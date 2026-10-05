@@ -1,0 +1,38 @@
+services:
+  
+
+  db:
+    image: postgres:14.2
+    environment:
+      POSTGRES_DB: restaurantOrderDB
+      POSTGRES_USER: Ben
+      POSTGRES_PASSWORD: BenDB12345
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+
+  pgadmin:
+    image: dpage/pgadmin4:6.9
+    depends_on:
+      - db
+    environment:
+      PGADMIN_DEFAULT_EMAIL: beanchen2024@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: BenUI12345
+    ports:
+      - "8080:80"
+    volumes:
+      - pgadmin4-data:/var/lib/pgadmin
+  
+  django_container:
+    build: .
+    depends_on:
+      - db
+    ports:
+      - "8010:8080" 
+    volumes:
+      - ./app:/container_app
+
+
+volumes:
+  db-data:    
+  pgadmin4-data:
