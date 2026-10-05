@@ -6,13 +6,17 @@
 &nbsp;
 ## How to set up?
 ### Step1 Set up the containers
-### Option1 Build the container image if it doesn't exist, create container and run it
+### Option1 Build all the docker images if they don't exist, create containers and run them
 ```
 docker compose up -d
 ```
-### Option2 Rebuild the container image even if it exists already, create container and run it
+### Option2 Rebuild all the docker images even if they already exist, create containers and run them
 ```
 docker compose up --build -d
+```
+### Remarks: If you only want to build/rebuild all the docker images, you can run this command
+```
+docker compose build -d
 ```
 &nbsp;
 ### Step2 Connect pgadmin4 to the PostgresDB
